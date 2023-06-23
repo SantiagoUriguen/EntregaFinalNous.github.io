@@ -286,6 +286,12 @@ main {
     display: none;
 }
 
+.sort-selector {
+    position: absolute;
+    top: 75px;
+    right: 75px;
+}
+
 /*** MEDIA QUERIES ***/
 
 @media screen and (max-width: 850px) {

@@ -1,9 +1,11 @@
 let productos = [];
+let originalProductos = [];
 
 fetch("./js/productos.json")
     .then(response => response.json())
     .then(data => {
         productos = data;
+        originalProductos = clone(productos);
         cargarProductos(productos);
     })
 
@@ -42,6 +44,23 @@ function cargarProductos(productosElegidos) {
 
     actualizarBotonesAgregar();
 }
+
+document.getElementById('orderBySelect').addEventListener('change',function(e) {
+    
+    let orderBy = e.target.value;
+
+    if (orderBy ==1)
+        productos = clone(originalProductos)
+    else if (orderBy ==2)
+        productos = productos.sort((a, b) => a.titulo > b.titulo ? 1 : -1 );
+    else if (orderBy ==3)    
+        productos = productos.sort((a, b) => a.precio > b.precio ? 1 : -1 );
+    else if (orderBy ==4)
+        productos = productos.sort((a, b) => a.precio < b.precio ? 1 : -1 );
+    
+    cargarProductos(productos);
+}) 
+
 
 
 botonesCategorias.forEach(boton => {
@@ -123,4 +142,11 @@ function agregarAlCarrito(e) {
 function actualizarNumerito() {
     let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     numerito.innerText = nuevoNumerito;
+}
+
+function clone(arr) {
+    let copy = [];
+    for (i = 0; i < arr.lenght; i++)
+        copy[i] = arr[i];
+    return copy;    
 }

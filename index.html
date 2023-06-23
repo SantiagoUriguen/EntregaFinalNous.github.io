@@ -51,9 +51,19 @@
             </footer>
         </aside>
         <main>
-            <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+            <div class="top-panel">
+                <h2 class="titulo principal" id="titulo-principal">Todos los productos</h2>
+                <div class="sort-selector">
+                    <select id="orderBySelect">
+                        <option value="1">Relevancia</option>
+                        <option value="2">Nombre</option>
+                        <option value="3">Menor precio</option>
+                        <option value="4">Mayor precio</option>
+                    </select>
+                </div>
+            </div>
             <div id="contenedor-productos" class="contenedor-productos">
-                <!-- Esto se va a rellenar con JS -->
+                
             </div>
         </main>
     </div>
